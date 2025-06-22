@@ -1,154 +1,87 @@
 #include <stdio.h>
 
-#define ALPHABET_LENGTH     26  // Length of the alphabet
-#define NUMBER_OF_DIGITS    10  // Number of unique digits
+#define ASCII_LENGTH    128
 
 int main()
 {
-    long uppercase[ALPHABET_LENGTH];     // Occurrences of uppercase letters
-    long lowercase[ALPHABET_LENGTH];     // Occurrences of lowercase letters
-    long digits[NUMBER_OF_DIGITS];       // Occurrences of each digit
-    long space_count = 0;                // Occurrences of spaces
-    long period_count = 0;               // Occurrences of periods
-    long comma_count = 0;                // Occurrences of commas
-    long exclamation_count = 0;          // Occurrences of exclamation marks
-    long question_count = 0;             // Occurrences of question marks
-    long newline_count = 0;              // Occurrences of newlines
-    long single_quote_count = 0;        // Occurrences of single quotes
-    long double_quote_count = 0;        // Occurrences of double quotes
-    long hyphen_count = 0;               // Occurrences of hyphens
-    long colon_count = 0;                // Occurrences of colons
-    long semicolon_count = 0;            // Occurrences of semicolons
-    long ampersand_count = 0;            // Occurrences of ampersands
-    int c;                               // Character buffer
+    long count[ASCII_LENGTH];   // Character counts
+    int c;                      // Character buffer
 
-    // Initialize arrays
-    for (int i = 0; i < ALPHABET_LENGTH; i++)
-        uppercase[i] = 0;
-    for (int i = 0; i < ALPHABET_LENGTH; i++)
-        lowercase[i] = 0;
-    for (int i = 0; i < NUMBER_OF_DIGITS; i++)
-        digits[i] = 0;
+    // Initialise character counts
+    for (int i = 0; i < ASCII_LENGTH; i++)
+        count[i] = 0;
 
-    // Count characters
-    while((c = getchar()) != EOF) {
-        if (c >= 'A' && c <= 'Z')
-            uppercase[c - 'A']++;
-        else if (c >= 'a' && c <= 'z')
-            lowercase[c - 'a']++;
-        else if (c >= '0' && c <= '9')
-            digits[c - '0']++;
-        else if (c == ' ')
-            space_count++;
-        else if (c == '.')
-            period_count++;
-        else if (c == ',')
-            comma_count++;
-        else if (c == '!')
-            exclamation_count++;
-        else if (c == '?')
-            question_count++;
-        else if (c == '\n')
-            newline_count++;
-        else if (c == '\'')
-            single_quote_count++;
-        else if (c == '\"')
-            double_quote_count++;
-        else if (c == ':')
-            hyphen_count++;
-        else if (c == ';')
-            semicolon_count++;
-        else if (c == '&')
-            ampersand_count++;
+    // Read and record character input
+    while ((c = getchar()) != EOF) {
+        count[c]++;
     }
 
-    // Print histogram
-    // Uppercase characters
-    for (int i = 0; i < ALPHABET_LENGTH; i++) {
-        printf("%c | ", i + 'A');
-        for (long j = 0; j < uppercase[i]; j++) {
+    /* OUTPUT RESULTS */
+    // Uppercase letters
+    for (int i = 'A'; i <= 'Z'; i++) {
+        printf("%c  | ", i);
+        for (int j = 0; j < count[i]; j++)
             putchar('#');
-        }
-        putchar('\n');
+        printf("\n");
     }
-    // Lowercase characters
-    for (int i = 0; i < ALPHABET_LENGTH; i++) {
-        printf("%c | ", i + 'a');
-        for (long j = 0; j < lowercase[i]; j++) {
+    // Lowercase letters
+    for (int i = 'a'; i <= 'z'; i++) {
+        printf("%c  | ", i);
+        for (int j = 0; j < count[i]; j++)
             putchar('#');
-        }
-        putchar('\n');
+        printf("\n");
     }
     // Digits
-    for (int i = 0; i < NUMBER_OF_DIGITS; i++) {
-        printf("%c | ", i + '0');
-        for (long j = 0; j < digits[i]; j++)
+    for (int i = '0'; i <= '9'; i++) {
+        printf("%c  | ", i);
+        for (int j = 0; j < count[i]; j++)
             putchar('#');
-        putchar('\n');
+        printf("\n");
     }
-    // Spaces
-    printf("  | ");
-    for (long i = 0; i < space_count; i++)
-        putchar('#');
-    putchar('\n');
-    // Periods
-    printf(". | ");
-    for (long i = 0; i < period_count; i++)
-        putchar('#');
-    putchar('\n');
-    // Commas
-    printf(", | ");
-    for (long i = 0; i < comma_count; i++)
-        putchar('#');
-    putchar('\n');
-    // Exclamation marks
-    printf("! | ");
-    for (long i = 0; i < exclamation_count; i++)
-        putchar('#');
-    putchar('\n');
-    // Question marks
-    printf("? | ");
-    for (long i = 0; i < question_count; i++)
+    // OTHER CHARACTERS
+    // Space
+    printf("   | ");
+    for (int j = 0; j < count[' ']; j++)
         putchar('#');
     putchar('\n');
     // Newlines
-    printf("\\n| ");
-    for (long i = 0; i < newline_count; i++)
+    printf("\\n | ");
+    for (int j = 0; j < count['\n']; j++)
         putchar('#');
-    putchar('\n');
-    // Single quotes
-    printf("\' | ");
-    for (long i = 0; i < single_quote_count; i++)
+    printf("\n");
+    // Tabs
+    printf("\\t | ");
+    for (int j = 0; j < count['\t']; j++)
         putchar('#');
-    putchar('\n');
-    // Double quotes
-    printf("\" | ");
-    for (long i = 0; i < double_quote_count; i++)
-        putchar('#');
-    putchar('\n');
-    // Hyphens
-    printf("- | ");
-    for (long i = 0; i < hyphen_count; i++)
-        putchar('#');
-    putchar('\n');
-    // Double quotes
-    printf("\" | ");
-    for (long i = 0; i < double_quote_count; i++)
-        putchar('#');
-    putchar('\n');
-    // Colons
-    printf(": | ");
-    for (long i = 0; i < colon_count; i++)
-        putchar('#');
-    putchar('\n');
-    // Semicolons
-    printf("; | ");
-    for (long i = 0; i < semicolon_count; i++)
-        putchar('#');
-    putchar('\n');
-    // Ampersands
-    printf("& | ");
-    for (long i = 0; i < ampersand_count; i++)
-        putchar('#');
-    putchar('\n');
+    printf("\n");
+    // Exclamation to forward slash
+    for (int i = '!'; i <= '/'; i++) {
+        printf("%c  | ", i);
+        for (int j = 0; j < count[i]; j++)
+            putchar('#');
+        putchar('\n');
+    }
+    // Colons to at symbols
+    for (int i = ':'; i <= '@'; i++) {
+        printf("%c  | ", i);
+        for (int j = 0; j < count[i]; j++)
+            putchar('#');
+        putchar('\n');
+    }
+    // Left square brackets to backticks
+    for (int i = '['; i <= '`'; i++) {
+        printf("%c  | ", i);
+        for (int j = 0; j < count[i]; j++)
+            putchar('#');
+        putchar('\n');
+    }
+    // Left curly bracers to tilde
+    for (int i = '{'; i <= '~'; i++) {
+        printf("%c  | ", i);
+        for (int j = 0; j < count[i]; j++)
+            putchar('#');
+        putchar('\n');
+    }
+
+    printf("\n");
 }
