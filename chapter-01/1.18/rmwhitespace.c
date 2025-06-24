@@ -2,7 +2,7 @@
     rmwhitespace.c
     Date: Wednesday 25th June 2025
     Author: Brendan Gasparin <brendan.gasparin@gmail.com>
-    Takes the input and prints it to the output, removing blanks lines 
+    Takes the input and prints it to the output, removing blank lines 
     and trailing spaces and tabs.
 */
 
