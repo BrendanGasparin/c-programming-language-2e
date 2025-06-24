@@ -28,9 +28,7 @@ int main()
             copy(longest, line);
         }
     if (max > 0)
-    {
-        printf("%i: %s\n", max, longest);
-    }
+        printf("%i: %s", max - 1, longest);
     return 0;
 }
 
@@ -39,7 +37,7 @@ int get_line(char s[], int lim)
 {
     int c, i;
 
-    for (i = 0; i < lim && (c = getchar()) != EOF && c != '\n'; ++i)
+    for (i = 0; i < lim - 1 && (c = getchar()) != EOF && c != '\n'; ++i)
         s[i] = c;
     if (c == '\n') {
         s[i] = c;
