@@ -1,0 +1,6 @@
+This line has no tabs.
+This line has   one tab.
+This line has       two tabs.
+This    line    has three   tabs.
+    This line starts with a tab.
+This one doesn't.
