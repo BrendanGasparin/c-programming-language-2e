@@ -12,16 +12,15 @@
 #define TRUE 1
 #define FALSE 0
 
-void detab(char s[], int length);
+void detab(char s[]);
 int get_line(char s[], int lim);
 
 int main()
 {
     char line[CHAR_BUFFER_SIZE];    // The line buffer
-    int length;                     // Length of the line
 
-    while (length = get_line(line, CHAR_BUFFER_SIZE) > 0)
-        detab(line, length);
+    while (get_line(line, CHAR_BUFFER_SIZE) > 0)
+        detab(line);
 
     return 0;
 }
@@ -44,7 +43,7 @@ int get_line(char s[], int lim)
 }
 
 // Prints the input, converting tabs into the sppropriate number of space characters
-void detab(char s[], int length)
+void detab(char s[])
 {
     int char_count = 0;
     int n;  // Number of spaces to print
