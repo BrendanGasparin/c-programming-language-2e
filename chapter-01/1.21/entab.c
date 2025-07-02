@@ -4,6 +4,7 @@
 #define CHAR_BUFFER_SIZE 2500
 
 int get_line(char s[], int lim);
+void entab(char s[]);
 
 int main()
 {
@@ -11,7 +12,7 @@ int main()
     int length;                     // Length of the line
 
     while (length = get_line(line, CHAR_BUFFER_SIZE) > 0)
-        entab(line, length);
+        entab(line);
 
     return 0;
 }
@@ -33,6 +34,6 @@ int get_line(char s[], int lim)
     return i;
 }
 
-void entab(char s[], int length) {
+void entab(char s[]) {
     return;
 }
