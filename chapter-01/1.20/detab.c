@@ -9,7 +9,6 @@
 #include <stdio.h>
 
 #define CHAR_BUFFER_SIZE 2500
-#define COLUMNS 625
 #define TRUE 1
 #define FALSE 0
 
