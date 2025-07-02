@@ -1,6 +1,6 @@
 /*
     detab.c
-    Date: Sunday 29th June 2025
+    Date: Thursday 3rd July 2025
     Author: Brendan Gasparin <brendan.gasparin@gmail.com>
     Converts tabs from the input into an appropriate number of spaces
     in the output.
