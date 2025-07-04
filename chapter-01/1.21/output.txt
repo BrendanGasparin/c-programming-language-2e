@@ -1,0 +1,5 @@
+This line has			  13 spaces.
+This line has		two	tabs.
+This   line	  has	three sets of three	spaces.
+This line has		two	tabs	  followed by six spaces.
+This line has two trailing tabs	and	three trailing spaces.		   
